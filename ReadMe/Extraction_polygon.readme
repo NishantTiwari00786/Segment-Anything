@@ -1,0 +1,38 @@
+GeoTIFF and Shapefile Intersection Processor
+
+  Description
+
+    This script processes geographic data by intersecting shapefiles with GeoTIFF raster images to generate cropped rasters based on the geometries defined in the shapefile.
+
+Requirements
+  Python 3.x
+  Libraries: geopandas, rasterio, shapely
+
+Installation
+  Install required Python packages:
+    pip install geopandas rasterio shapely
+
+Inputs
+  Shapefile Path: Path to the shapefile containing geographic geometries.
+    Example: /Users/nishanttiwari/Desktop/CA_farmland
+  GeoTIFF Directory: Directory containing GeoTIFF files to be processed.
+    Example: /Users/nishanttiwari/Desktop/US_BASEMAP
+  Output Directory: Directory where output files will be stored.
+    Example: /Users/nishanttiwari/Desktop/Extraction_CA
+
+Outputs
+  Cropped GeoTIFF images saved in the specified output directory, named using the format: output_{OBJECTID}_{originalGeoTIFFName}.
+
+Usage
+Run the script after setting the paths for the shapefile, GeoTIFF directory, and output directory.
+Ensure that the input shapefile and GeoTIFF files are properly coordinated in terms of Coordinate Reference System (CRS).
+
+Process Flow
+Load the shapefile and verify its contents.
+Create the output directory if it does not exist.
+Process each GeoTIFF file:
+Check CRS alignment between the shapefile and GeoTIFF.
+Identify intersecting geometries.
+Crop and save GeoTIFF based on each intersecting geometry.
+Conclusion
+This script facilitates the extraction of relevant raster data from larger GeoTIFF files based on geographic boundaries defined in a shapefile, useful for spatial analysis and GIS applications.
