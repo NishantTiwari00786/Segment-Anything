@@ -1,0 +1,47 @@
+SAM Image Segmentation Project
+  Overview
+    This project utilizes the Segment Anything Model (SAM) powered by a Vision Transformer (ViT-H) to perform image segmentation. It supports generating masks based on specific points or automatically for the entire image. The resulting masks are visualized and saved for further analysis.
+
+Prerequisites
+  Python 3.x
+  OpenCV (opencv-python)
+  NumPy
+  Matplotlib
+  Pillow
+  Torchvision
+  The segment-anything module, including the SAM model and utilities
+
+Installation
+  Install the required libraries using pip:
+  pip install opencv-python numpy matplotlib Pillow torchvision
+
+Configuration
+  Model Path: Path to the SAM model weights.
+    Example: /Users/nishanttiwari/Desktop/SAM weights/sam_vit_h_4b8939.pth
+  Image Path: Path to the input image for segmentation.
+    Example: /Users/nishanttiwari/Desktop/output_256_1024_328-1343_quad.tif
+  Output Directory: Directory to store the output masks and processed images.
+    Example: /Users/nishanttiwari/Desktop/OPEN_CV_SAM_OUTPUT
+
+Features
+  Point-Based Segmentation: Generate masks at specified coordinates within the image.
+  Automatic Full Image Segmentation: Automatically produce masks for significant visual features across the entire image.
+  Visualization: Display and save the segmented masks alongside the original image.
+  Combined Mask Application: Apply a combined version of all generated masks to the original image and save the result.
+
+Usage
+  Set the image and model paths in the script to your specific setup.
+  Execute the script to process the image and generate masks, which are saved and visualized.
+
+Output  
+  Individual masks are saved as PNG files in the specified output directory.
+  The combined mask is applied to the original image, saved as a JPG file.
+  The script also displays the original image overlaid with mask contours and optional confidence scores.
+
+Running the Script
+  Run the script from your Python environment:
+  python segment_image.py
+
+Conclusion
+  This utility provides a robust tool for image segmentation using state-of-the-art machine learning models, suitable for academic, industrial, or personal projects involving image analysis.
+
