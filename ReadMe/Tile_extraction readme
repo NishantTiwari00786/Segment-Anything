@@ -1,0 +1,33 @@
+GeoTIFF Tiling Utility
+  Description
+    This utility extracts fixed-size tiles from GeoTIFF files, suitable for further processing in GIS applications or machine learning models. It processes all GeoTIFF files in a specified directory and outputs the tiles to another directory.
+
+Requirements
+  Python 3.x
+  Rasterio library
+
+Installation
+  Install the required Python package:
+    pip install rasterio
+
+Inputs
+  Directory Path: Directory containing the GeoTIFF files to be processed.
+    Example: /Users/nishanttiwari/Desktop/US_BASEMAP
+Output Directory: Directory where the extracted tiles will be saved.
+    Example: /Users/nishanttiwari/Desktop/US_BASEMAP_TILE
+Tile Size: Dimensions of the tiles in pixels. Default is 256x256 pixels.
+  Hop Size: Step size for moving the window across the image. Default is 256x256 pixels (non-overlapping tiles).
+  Outputs
+  Extracted tiles are saved in the output directory, named using the format: output_{row}_{column}_{originalFileName}.tif.
+
+Usage
+Adjust the paths and tile/hop sizes as needed in the script. Run the script to process all GeoTIFF files in the specified directory.
+
+Process Flow
+  Verifies existence or creates the output directory.
+  Processes each GeoTIFF file in the specified directory:
+  For each file, tiles are extracted based on the defined tile and hop sizes.
+  Each tile is saved with its position and base file name.
+  Outputs total number of tiles generated.
+Conclusion
+  This utility streamlines the extraction of uniform tiles from larger GeoTIFF files, facilitating data preparation tasks for various applications including spatial analysis and training machine learning models.
