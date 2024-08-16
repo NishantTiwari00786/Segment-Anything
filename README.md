@@ -4,4 +4,5 @@ Codebase for Segment-anything along with tile extraction, polygon extraction, Sa
 
 
 SRC --> All the codebase
+
 Readme --> Contains detailed readme for each scripts
