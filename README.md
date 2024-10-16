@@ -1,5 +1,5 @@
 
-# Segment Anything Model (SAM) and Farmland Classifier Project
+# Segment Anything Model (SAM) and Farmland Classifier Project - SAM
 
 ## Overview
 This project leverages the **Segment Anything Model (SAM)** alongside other machine learning tools to handle image segmentation tasks, particularly focused on geospatial data related to farmland. The project integrates SAM with libraries like **OpenCV** and **TensorFlow** to process and classify images, with the overall goal of identifying and analyzing farmland using both image segmentation and classification methods.
