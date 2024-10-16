@@ -1,111 +1,44 @@
 
-# Nationwide Farmland Dataset Exploration
+# Segment Anything Model (SAM) and Farmland Classifier Project
 
-## Project Overview
-This project focuses on geospatial data exploration, leveraging machine learning techniques to analyze and classify agricultural land across the nation. The main goal of the project was to develop a **CNN-based classifier** and utilize META's **Segment Anything Model (SAM)** for segmentation and classification of agricultural lands vs. metropolitan areas from satellite imagery.
+## Overview
+This project leverages the **Segment Anything Model (SAM)** alongside other machine learning tools to handle image segmentation tasks, particularly focused on geospatial data related to farmland. The project integrates SAM with libraries like **OpenCV** and **TensorFlow** to process and classify images, with the overall goal of identifying and analyzing farmland using both image segmentation and classification methods.
 
-### Key Objectives:
-1. Build a CNN model to classify satellite images as farmland or metropolitan areas.
-2. Customize and integrate the SAM model to assist in segmenting geospatial data for analysis.
-3. Develop a pipeline that efficiently processes large geospatial datasets for nationwide agricultural analysis.
-4. Modify and test the models on both small and large datasets to ensure scalability and accuracy.
+## Key Scripts
 
-## Project Components
-### 1. Data Preparation:
-- **Dataset:** Nationwide geospatial data including satellite imagery of both agricultural land (positive examples) and metropolitan areas (negative examples).
-- **Preprocessing:** Conversion of **Cropland Data Layer (CDL)** into RGB images for SAM processing.
-- **Tools:** Python, GDAL, and various image-processing libraries for geospatial data handling.
+1. **Extraction_polygon.py**
+   - This script is responsible for extracting polygons from geospatial datasets, such as shapefiles. It processes these polygons and prepares them for further analysis or integration with the Segment Anything Model (SAM).
 
-### 2. CNN Model (Farmland Classifier):
-- **Model Architecture:** A convolutional neural network (CNN) trained to classify satellite images as farmland or non-farmland.
-- **Training Data:** Positive examples (agricultural land) and negative examples (metropolitan areas), with data augmentation to expand the dataset.
-- **Training Strategy:** Initially tested on smaller datasets, then scaled to larger, nationwide datasets to ensure generalization.
-  
-### 3. SAM (Segment Anything Model) Integration:
-- **Model Used:** ViT-H model from META's SAM framework.
-- **Purpose:** To generate segmentation masks for each image and assist the classifier by focusing on specific regions of interest within satellite images.
-- **Customization:** Adjusted SAM to process custom geospatial data and integrate with the CNN classifier.
+2. **SAM_on_OPENCV.py**
+   - This script integrates **SAM (Segment Anything Model)** with **OpenCV** to handle image segmentation. The script uses OpenCV for pre-processing and visualization of images, and then applies SAM to generate segmented regions of interest.
 
-### 4. Polygon Extraction Algorithm:
-- Extracts polygons from shapefiles (CA_farmland) and clips them into 256x256 tiles.
-- Processes polygons and associated GeoTIFF files, then runs classification on each tile.
+3. **SAM_on_Tensorflow.py**
+   - This script uses **SAM** in combination with **TensorFlow** to perform advanced machine learning tasks. After SAM completes the segmentation, TensorFlow is used for further processing, training, or classification, particularly useful for classifying agricultural and metropolitan areas.
 
-### 5. Pipeline:
-- **Input:** Shapefile of farmland and a GeoTIFF image.
-- **Processing:** Polygon extraction, tiling, SAM segmentation, and CNN classification.
-- **Output:** Classified images, labeled as farmland or metropolitan areas.
+4. **Tille_extraction.py**
+   - The script for extracting tiles (sub-regions) from large geospatial images or maps. It is designed to split the images into smaller, manageable pieces, allowing for more detailed analysis and processing.
 
-## Directory Structure
-```plaintext
-├── CNN_Positive/           # Directory for positive (farmland) training images
-├── CNN_Negative/           # Directory for negative (metropolitan) training images
-├── Positive_valid/         # Directory for positive validation images
-├── Negative_valid/         # Directory for negative validation images
-├── US_Basemap/             # Contains GeoTIFF files for analysis
-├── CA_farmland.shp         # Shapefile containing CA farmland polygons
-├── SAM_weights/            # Pre-trained weights for the SAM model
-├── Segment_anything/       # SAM model code directory
-├── CDL_dataset/            # Contains Cropland Data Layer (CDL) files
-└── output/                 # Directory for storing output images and results
-```
+## Collaboration and Additional Repository
+The **Farmland Classifier** was developed in parallel with this project through collaboration. It involves the training and testing of a classifier to distinguish between farmland and non-farmland areas. For detailed explanations of the classifier's development, training, and results, please refer to the separate repository that contains the classifier's code and additional documentation.
 
-## Installation & Setup
-
-### Prerequisites:
-- Python 3.x
-- Required Python packages: 
-  - `gdal`
-  - `torch`, `torchvision`
-  - `segment-anything`
-  - `opencv-python`
-  - `matplotlib`
-
-### Steps:
-1. Clone this repository to your local machine:
+## Setup Instructions
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/nationwide-farmland-dataset.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd nationwide-farmland-dataset
-   ```
-3. Install required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Run the preprocessing script to convert the CDL dataset to RGB:
-   ```bash
-   python preprocess_cdl.py --input_path /path/to/cdl.tif --output_path /path/to/output
-   ```
-5. Train the CNN classifier on your dataset:
-   ```bash
-   python train_farmland_classifier.py
-   ```
-6. Use SAM for segmentation on your images:
-   ```bash
-   python run_sam.py --input_dir /path/to/images --output_dir /path/to/output_masks
+   git clone https://github.com/NishantTiwari00786/Full-Stack-Game-Rental-App.git
    ```
 
-## Results
-### Model Performance:
-- **Training Accuracy:** X%
-- **Validation Accuracy:** X%
-- **Test Accuracy on Full Dataset:** X%
+2. **Install dependencies**:
+   - Ensure that **OpenCV**, **TensorFlow**, and other required libraries are installed.
 
-### Example Output:
-[Insert sample images showing classified farmland and metropolitan areas]
+3. **Run the Scripts**:
+   - Follow the comments within each script to run them individually. Make sure the necessary datasets and shapefiles are available for processing.
 
-## Future Work
-- Expand the model to classify more types of land use beyond agricultural and metropolitan areas.
-- Fine-tune SAM for better segmentation accuracy on complex geospatial datasets.
-- Apply the model to larger, multi-year satellite datasets for trend analysis.
+## Technologies Used
+- **Segment Anything Model (SAM)**
+- **OpenCV**
+- **TensorFlow**
+- **Python**
+- **Geospatial Data**
 
-## Contributing
-Contributions are welcome! If you have suggestions or improvements, feel free to submit a pull request or open an issue.
-
-## Acknowledgements
-- Thanks to the **University of California, Riverside** for providing the resources and support for this research.
-- Special thanks to **META** for the **Segment Anything Model**.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Additional Notes
+This project is designed to work with geospatial data, particularly shapefiles and satellite imagery, to classify land usage. The integration of SAM allows for powerful image segmentation, while TensorFlow handles the classification tasks.
